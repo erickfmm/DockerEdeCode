@@ -398,6 +398,7 @@ class check:
 
             while True:
                 time += 1
+                #print(time)
                 if any(p.is_alive() for p in jobs):
                     if(self.args.time > 0 and time >= self.args.time):
                         for p in jobs:
@@ -405,11 +406,11 @@ class check:
                                 p.terminate()
                                 logger.error(f"TIMEOUT: {p}")
                         break
-                #else:
+                else:
                 #    if not self.args.parallel:
                 #        for p in jobs:
                 #            p.join()
-                #    break
+                    break
                 sleep(1)
             return return_dict
         except Exception as e:
